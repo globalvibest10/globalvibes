@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: globalvibest10/globalvibes  # Aap ki repository ka naam
+  branch: main                      # Aap ki main branch
+
+# Yeh section pictures (images) kay liye hai
+media_folder: "images/uploads" # Pictures is folder mein save hongi
+public_folder: "/images/uploads" # Pictures HTML mein kesay link hongi
+
+# Yahan hum batayengay kay Admin Panel mein kya nazar aana hai
+collections:
+  - name: "news" # Collection ka ID
+    label: "News Articles" # Admin panel mein yeh naam dikhayi dega
+    folder: "news-articles" # Har news article is naye folder mein save hoga
+    create: true # "Add New News" ka button dikhaye ga
+    slug: "{{slug}}" # File ka naam title se banayega (e.g., my-first-news)
+    
+    # Har News Article mein yeh 3 cheezein hongi
+    fields:
+      - {label: "Headline (Title)", name: "title", widget: "string"}
+      - {label: "Featured Image", name: "image", widget: "image"}
+      - {label: "Body (News Content)", name: "body", widget: "markdown"}
