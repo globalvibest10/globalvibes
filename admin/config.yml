@@ -7,18 +7,23 @@ public_folder: "/images/uploads"
 
 # Admin Panel mein kya nazar aana hai
 collections:
-  - name: "news"
-    label: "News Articles"
-    folder: "news-articles" # Yahan news save hongi
-    create: true
-    slug: "{{slug}}"
+  - name: "news" # Collection ka naam
+    label: "News Articles" # Admin panel mein yeh naam dikhayi dega
+    
+    # YEH LINE BADAL GAYI HAI (Sab se zaroori change)
+    # Hum saari news "data" folder mein "all-news.json" naam ki 1 file mein save karengay
+    file: "data/all-news.json"
+    
+    create: true # "Add New" ka button dikhaye ga
+    
+    # YEH WIDGET BADAL GAYA HAI
+    # Is se pata chalta hai kay yeh 1 file kay andar list hai
+    widget: "list" 
     
     # Har News Article mein yeh fields hongi
     fields:
       - {label: "Headline (Title)", name: "title", widget: "string"}
-      
-      # ==== YEH NAYA FIELD ADD KIYA HAI (DROPDOWN) ====
-      - label: "Category (Kis Page kay liye hai?)"
+      - label: "Category"
         name: "category"
         widget: "select"
         options: 
@@ -29,7 +34,5 @@ collections:
           - { label: "Finance", value: "finance" }
           - { label: "Social", value: "social" }
           - { label: "Breaking News (Homepage)", value: "breaking" }
-      # ===============================================
-      
       - {label: "Featured Image", name: "image", widget: "image"}
       - {label: "Body (News Content)", name: "body", widget: "markdown"}
