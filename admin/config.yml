@@ -1,20 +1,35 @@
 backend:
   name: git-gateway
 
-# Yeh section pictures (images) kay liye hai
-media_folder: "images/uploads" # Pictures is folder mein save hongi
-public_folder: "/images/uploads" # Pictures HTML mein kesay link hongi
+# Pictures (images) kay liye
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
 
-# Yahan hum batayengay kay Admin Panel mein kya nazar aana hai
+# Admin Panel mein kya nazar aana hai
 collections:
-  - name: "news" # Collection ka ID
-    label: "News Articles" # Admin panel mein yeh naam dikhayi dega
-    folder: "news-articles" # Har news article is naye folder mein save hoga
-    create: true # "Add New News" ka button dikhaye ga
-    slug: "{{slug}}" # File ka naam title se banayega (e.g., my-first-news)
+  - name: "news"
+    label: "News Articles"
+    folder: "news-articles" # Yahan news save hongi
+    create: true
+    slug: "{{slug}}"
     
-    # Har News Article mein yeh 3 cheezein hongi
+    # Har News Article mein yeh fields hongi
     fields:
       - {label: "Headline (Title)", name: "title", widget: "string"}
+      
+      # ==== YEH NAYA FIELD ADD KIYA HAI (DROPDOWN) ====
+      - label: "Category (Kis Page kay liye hai?)"
+        name: "category"
+        widget: "select"
+        options: 
+          - { label: "Politics", value: "politics" }
+          - { label: "Sports", value: "sports" }
+          - { label: "Entertainment", value: "entertainment" }
+          - { label: "Technology", value: "technology" }
+          - { label: "Finance", value: "finance" }
+          - { label: "Social", value: "social" }
+          - { label: "Breaking News (Homepage)", value: "breaking" }
+      # ===============================================
+      
       - {label: "Featured Image", name: "image", widget: "image"}
       - {label: "Body (News Content)", name: "body", widget: "markdown"}
