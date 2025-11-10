@@ -1,7 +1,5 @@
 backend:
-  name: github
-  repo: globalvibest10/globalvibes  # Aap ki repository ka naam
-  branch: main                      # Aap ki main branch
+  name: git-gateway
 
 # Yeh section pictures (images) kay liye hai
 media_folder: "images/uploads" # Pictures is folder mein save hongi
