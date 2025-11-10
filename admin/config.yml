@@ -7,32 +7,35 @@ public_folder: "/images/uploads"
 
 # Admin Panel mein kya nazar aana hai
 collections:
-  - name: "news" # Collection ka naam
-    label: "News Articles" # Admin panel mein yeh naam dikhayi dega
+  - name: "news_management" # Collection ka ID (change kar diya)
+    label: "News Management" # Naya label
     
-    # YEH LINE BADAL GAYI HAI (Sab se zaroori change)
-    # Hum saari news "data" folder mein "all-news.json" naam ki 1 file mein save karengay
-    file: "data/all-news.json"
-    
-    create: true # "Add New" ka button dikhaye ga
-    
-    # YEH WIDGET BADAL GAYA HAI
-    # Is se pata chalta hai kay yeh 1 file kay andar list hai
-    widget: "list" 
-    
-    # Har News Article mein yeh fields hongi
-    fields:
-      - {label: "Headline (Title)", name: "title", widget: "string"}
-      - label: "Category"
-        name: "category"
-        widget: "select"
-        options: 
-          - { label: "Politics", value: "politics" }
-          - { label: "Sports", value: "sports" }
-          - { label: "Entertainment", value: "entertainment" }
-          - { label: "Technology", value: "technology" }
-          - { label: "Finance", value: "finance" }
-          - { label: "Social", value: "social" }
-          - { label: "Breaking News (Homepage)", value: "breaking" }
-      - {label: "Featured Image", name: "image", widget: "image"}
-      - {label: "Body (News Content)", name: "body", widget: "markdown"}
+    # YEH HAI SAHI TAREEQA (files: plural)
+    files:
+      # Hum sirf 1 file ko edit kar rahay hain
+      - label: "All News Articles"
+        name: "news"
+        file: "data/all-news.json" # File ka path
+        
+        # Is file kay andar 1 field hai jo 'list' hai
+        fields:
+          - label: "News Articles List"
+            name: "articles" # List ka naam
+            widget: "list" # Yeh list hai
+            
+            # Is list kay har item mein yeh fields hongi
+            fields:
+              - {label: "Headline (Title)", name: "title", widget: "string"}
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: 
+                  - { label: "Politics", value: "politics" }
+                  - { label: "Sports", value: "sports" }
+                  - { label: "Entertainment", value: "entertainment" }
+                  - { label: "Technology", value: "technology" }
+                  - { label: "Finance", value: "finance" }
+                  - { label: "Social", value: "social" }
+                  - { label: "Breaking News (Homepage)", value: "breaking" }
+              - {label: "Featured Image", name: "image", widget: "image"}
+              - {label: "Body (News Content)", name: "body", widget: "markdown"}
